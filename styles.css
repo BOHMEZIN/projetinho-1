@@ -52,8 +52,10 @@
 
 .relatas{
   margin-top: 10px;
-  margin-left: 600px;
-  margin-right: 600px;
+  /*margin-left: 600px;*/
+  /*margin-right: 600px;*/
+  align-items: center;
+  justify-content: center;
   background-color: #EEEEE0;
   border: solid;
   border-width: 1px;
