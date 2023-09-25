@@ -91,4 +91,3 @@ function playNextSong() {
     }
     renderizarMusica(indexMusica);
 
-    musica.addEventListener('ended', playNextSong);
