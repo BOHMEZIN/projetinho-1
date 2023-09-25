@@ -2,12 +2,12 @@ let musicas = [
     {titulo:'Sweather Weather', artista:'The Neighbourhood', src:'musicas/Sweater Weather.mp3', img:'imagens/sweather.jpg'},
     {titulo:'I miss you', artista:'Blink-182', src:'musicas/I Miss You.mp3', img:'imagens/blink-182.jpg'},
     {titulo:'strangers', artista:'Kenya Grace', src:'musicas/Strangers.mp3', img:'imagens/Strangers.png'},
-    {titulo:'Painkiller', artista:'Judas Priest', src:'musicas/painkiller.mp3', img:'imagens/painkiller.jpg'},
+    {titulo:'Painkiller', artista:'Judas Priest', src:'musicas/Painkiller.mp3', img:'imagens/painkiller.jpg'},
     {titulo:'Assobio Levanta Defunto', artista:'DJ russo', src:'musicas/Assobio Levanta Defunto.mp3', img:'imagens/assobio.jpg'},
     {titulo:'Blade', artista:'Imperanon', src:'musicas/Blade.mp3', img:'imagens/blade.jpg'},
-    {titulo:'nanana X cola', artista:'Lewis Hanton', src:'musicas/na na na x Cola.mp3', img:'imagens/nanana.jpg'},
+    {titulo:'Edifice of Tyranny', artista:'Ouroboros', src:'musicas/Edifice of Tyranny.mp3', img:'imagens/edifices.jpg'},
     {titulo:'Wrong Side Of Heaven', artista:'Five Finger Death Punch', src:'musicas/Wrong Side Of Heaven.mp3', img:'imagens/wrong-side.jpg'},
-    {titulo:'On Melancholy Hill', artista:'Gorillaz', src:'musicas/On Melancholy Hill.mp3', img:'imagens/on melancho.jpg'},
+    {titulo:'Pink + White', artista:'Frank Ocean', src:'musicas/Pink + White.mp3', img:'imagens/pink.png'},
     {titulo:'Alive!', artista:'Bakar', src:'musicas/Alive!.mp3', img:'imagens/alive!.jpg'},
 ];
 
