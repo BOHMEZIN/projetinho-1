@@ -2,7 +2,7 @@ let musicas = [
     {titulo:'Sweather Weather', artista:'The Neighbourhood', src:'musicas/Sweater Weather.mp3', img:'imagens/sweather.jpg'},
     {titulo:'I miss you', artista:'Blink-182', src:'musicas/I Miss You.mp3', img:'imagens/blink-182.jpg'},
     {titulo:'strangers', artista:'Kenya Grace', src:'musicas/Strangers.mp3', img:'imagens/Strangers.png'},
-    {titulo:'Painkiller', artista:'Judas Priest', src:'musicas/Painkiller.mp3', img:'imagens/painkiller.jpg'},
+    {titulo:'Painkiller', artista:'Judas Priest', src:'musicas/painkiller.mp3', img:'imagens/painkiller.jpg'},
     {titulo:'Assobio Levanta Defunto', artista:'DJ russo', src:'musicas/Assobio Levanta Defunto.mp3', img:'imagens/assobio.jpg'},
     {titulo:'Blade', artista:'Imperanon', src:'musicas/Blade.mp3', img:'imagens/blade.jpg'},
     {titulo:'Edifice of Tyranny', artista:'Ouroboros', src:'musicas/Edifice of Tyranny.mp3', img:'imagens/edifices.jpg'},
