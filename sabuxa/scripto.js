@@ -83,3 +83,12 @@ function segundosParaMinutos(segundos){
 
     return campoMinutos+':'+campoSegundos;
 }
+
+function playNextSong() {
+    indexMusica++;
+    if (indexMusica >= musicas.length) {
+        indexMusica = 0; 
+    }
+    renderizarMusica(indexMusica);
+
+    musica.addEventListener('ended', playNextSong);
