@@ -7,7 +7,7 @@ let musicas = [
     {titulo:'Blade', artista:'Imperanon', src:'musicas/Blade.mp3', img:'imagens/blade.jpg'},
     {titulo:'nanana X cola', artista:'Lewis Hanton', src:'musicas/na na na x Cola.mp3', img:'imagens/nanana.jpg'},
     {titulo:'Wrong Side Of Heaven', artista:'Five Finger Death Punch', src:'musicas/Wrong Side Of Heaven.mp3', img:'imagens/wrong-side.jpg'},
-    {titulo:'Magrao Subaquatico 2023', artista:'DJ novato', src:'musicas/MAGRÃO SUBAQUÁTICO 2023.mp3', img:'imagens/magrao.jpg'},
+    {titulo:'On Melancholy Hill', artista:'Gorillaz', src:'musicas/On Melancholy Hill.mp3', img:'imagens/on melancho.jpg'},
     {titulo:'Alive!', artista:'Bakar', src:'musicas/Alive!.mp3', img:'imagens/alive!.jpg'},
 ];
 
