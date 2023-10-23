@@ -1,0 +1,106 @@
+.body{
+  background-color: #e2e2e2ce;
+    
+}
+
+.Container{
+    background-color: white;
+    
+    margin: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+}
+
+.logo{
+    width: 150px;
+}
+
+.btn1{
+    clear: none;
+    padding-left: 490px;
+    height: 10px;
+    padding-right: 30px;
+    text-decoration: none;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.btn2{ 
+    padding: 30px;
+    text-decoration: none;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.btn3{ 
+    padding: 30px;
+    text-decoration: none;
+    color: black;
+   
+    font-family: Arial, Helvetica, sans-serif;
+}
+.btn4{ 
+    padding: 30px;
+    text-decoration: none;
+    color: black;
+    
+    font-family: Arial, Helvetica, sans-serif;
+}
+.btn5{ 
+    padding: 30px;
+    text-decoration: none;
+    color: black;
+    
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.galeria{
+    display: flex;
+    margin-left: 400px;
+    width: 60%;
+    height: 40%;
+    padding-top: 40px;
+    border-radius: 5px;
+    margin-top: 13px;
+}
+
+.img{
+    aspect-ratio: 9/16;
+    min-width: 0;
+    flex: 1 1 10px;
+    object-fit: cover;
+    opacity: .5;
+    transition: .5s;
+    border-radius: 5px;
+}
+
+img:hover{
+    flex: 1 1 100px;
+    opacity: 1;
+}
+
+.img2{
+    aspect-ratio: 16/16;
+    min-width: 0;
+    flex: 1 1 10px;
+    object-fit: cover;
+    opacity: .5;
+    transition: .5s;
+    border-radius: 10px;
+}
+
+.pesquisa{
+    border-radius: 3px;
+    margin-left: 300px;
+    margin-bottom: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 200px;
+    height: 20px;
+}
+
+.body2{
+    background-color: rgb(228, 210, 213);
+}
