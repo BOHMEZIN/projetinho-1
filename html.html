@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="https://fonts.google.com/share?selection.family=Outfit:wght@100..900|Shrikhand">
+  <title>Saúde Conectada - Protótipo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      margin-top: 50px;
+      background-color: #cfcfcfcc;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 90vh;
+    }
+    .screen {
+      width: 100%;
+      max-width: 390px;
+      height: 60vh;
+      background: rgb(255, 255, 255);
+      border-radius: 40px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: none;
+      overflow-y: auto;
+    }
+    .screen.active {
+      display: block;
+    }
+    h2 {
+      text-align: left;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+      margin-top: 0;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #2b8a3e;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .menu button {
+      background-color: #eafffd;
+      color: #333;
+      border: none;
+      border-radius: 10px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-size: 14px;
+    }
+    .wait-time {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      margin: 5px;
+    }
+    a {
+      text-decoration: none;
+      color: #2b8a3e;
+    }
+    label.checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+    }
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 390px;
+      height: 60px;
+      background: #fff;
+      border-top: 1px solid #ccc;
+      border-radius: 30px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 10px;
+      margin-bottom: 330px;
+      border: #333;
+      cursor: pointer;
+    }
+    
+    /*teste do pop up*/
+
+    .popup {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    width: 250px;
+    height: 150px;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid rgb(216, 216, 216);
+    padding: 20px;
+    z-index: 1000; /* Garante que o pop-up fique por cima de outros elementos */
+  }
+  .popup.show {
+    display: block; /* Torna visível */
+  }
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
+    z-index: 999;
+  }
+  .overlay.show {
+    display: block;
+  }
+
+  .button3{
+    background-color:rgba(0, 180, 0, 0.4);
+    color: #000000;
+    
+  }
+  .sexo1{
+    margin-left: 130px;
+    width: 50px;
+  }
+
+  .perfil-saude {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #2dffc0;
+      background-color: #d3dfda;
+      border-radius: 10px;
+      margin: 5px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .font-perfil{
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .histscreen {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+      border-right: 2px solid #00ffff;
+      background-color: #effffc;
+      color: #000000;
+      border-radius: 10px;
+      margin: 5px;
+      width: 340px;
+    }
+
+    .font-saida-conta{
+      color: rgb(255, 0, 0);
+      padding-top: 17px;
+      padding-left: 5px;
+      cursor: pointer;
+    }
+    
+    .sair{
+      width: 13px;
+      cursor: pointer;
+    }
+ 
+    .RSRS{
+      width: 350px;
+    }
+
+    .sexo2{
+    margin-left: 130px;
+    width: 35px;
+  }
+
+   .sexo3{
+    margin-left: 115px;
+    width: 30px;
+  }
+
+
+   .chat-box {
+      border: 2px solid #c9fff1;
+      border-radius: 10px;
+      padding: 10px;
+      height: 300px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
+    }
+    .chat-message {
+      margin: 5px 0;
+    }
+    .chat-message.user {
+      text-align: right;
+      color: #2b8a3e;
+    }
+    .chat-message.bot {
+      text-align: left;
+      color: #333;
+    }
+  .textarea{
+    width: 350px;
+    border-radius: 10px;
+    border-color: #27ffe2;
+    background-color: #f1fffb;
+  }
+
+  .sexo4{
+    margin-left: 65px;
+    width: 30px;
+  }
+  </style>
+</head>
+<body>
+
+  <!-- Tela de Login -->
+  <div class="screen active" id="loginScreen">
+    <h2 style="text-align:center;">SAÚDE CONECTADA</h2>
+    <input type="text" placeholder="E-mail ou CPF" required />
+    <input type="password" placeholder="Senha" />
+    <label class="checkbox-label"> Lembrar-se?<input type="checkbox" /></label>
+    <button onclick="navigateTo('homeScreen')">Entrar</button>
+    <p style="text-align:center;"><a href="#">Esqueceu a senha?</a></p>
+  </div>
+
+  <!-- Tela Inicial -->
+  <div class="screen" id="homeScreen">
+    <h2 class="font-menu">Agende consultas,<br />veja o tempo<br />de espera e mais</h2>
+    <div class="menu">
+      <button onclick="navigateTo('agendamentoScreen')">Agendar consulta <img src="icons8-área-de-transferência-48.png" alt=""></button>
+      <button onclick="navigateTo('esperaScreen')">Tempo de espera <img src="icons8-relógio-48.png" alt=""></button>
+      <button onclick="navigateTo('historicscreen')">Histórico <img src="icons8-histórico-de-atividades-48.png" alt=""> </button>
+      <button onclick="navigateTo('perfilScreen')">Perfil de saúde <img src="icons8-pessoa-do-sexo-masculino-50.png" alt=""></button>
+      <button onclick="navigateTo('chat')">Chat/ajuda <img src="icons8-bate-papo-64.png" alt=""></button>
+    </div>
+  </div>
+
+  <!-- Tela de Agendamento -->
+  <div class="screen" id="agendamentoScreen">
+    <h2>Agende sua consulta</h2>
+    <select>
+      <option>Selecione a unidade</option>
+      <option>UBS Liro Hoesel</option>
+      <option>UBS Leonardo Alves</option>
+      <option>UBS Carlos Mazala</option>
+      <option>UBS Afonso Mansur</option>
+      <option>UBS Industrial</option>
+      <option>UBS Luis Valdez</option>
+      <option>Posto Nova conquista</option>
+      <option>UBS Vitalina Gentil</option>
+      <option>UPA 24Hrs</option>
+    </select>
+    <select>
+      <option>Especialidade</option>
+      <option>Clínico Geral</option>
+      <option>Pediatria</option>
+      <option>Ginecologia</option>
+      <option>Enfermagem</option>
+      <option>Psicologia</option>
+      <option>Psiquiatria</option>
+      <option>Fisioterapia</option>
+    </select>
+    <input type="date" />
+    <button id="openPopup">Agendar</button>
+    
+  </div>
+
+  <!-- Tela de Tempo de Espera -->
+  <div class="screen" id="esperaScreen">
+    <h2>Tempo de Espera <img src="icons8-relógio-48.png" alt="person" class="sexo3"></h2>
+    <div class="wait-time">
+      <span>UBS Liro Hoesel</span><span>20 min</span>
+    </div>
+    <div class="wait-time">
+      <span>UBS Leonardo Alves</span><span>35 min</span>
+    </div>
+    <div class="wait-time">
+      <span>UBS Carlos Mazala</span><span>10 min</span>
+    </div>
+    <div class="wait-time">
+      <span>UBS Afonso Mansur</span><span>24 min</span>
+    </div>
+    <div class="wait-time">
+      <span>UBS Industrial</span><span>13 min</span>
+    </div>
+    <div class="wait-time">
+      <span>UBS Luis Valdez</span><span>42 min</span>
+    </div>
+    <div class="wait-time">
+      <span>Posto Nova conquista</span><span>25 min</span>
+    </div>
+    <div class="wait-time">
+      <span>UBS Vitalina Gentil</span><span>5 min</span>
+    </div>
+    <div class="wait-time">
+      <span>UPA 24Hrs</span><span>55 min</span>
+    </div>
+
+    
+  </div>
+
+  <!-- Barra de Navegação Inferior -->
+  <div class="bottom-nav">
+    <div><img src="icons8-cardápio-50.png" alt="cardapio" width="20px"></div>
+    <div><img src="icons8-círculo-50.png" alt="circulo" width="20px"></div>
+    <div><button2 onclick="navigateTo('homeScreen')"><img src="icons8-voltar-50.png" alt="voltar" width="20px"></button2></div>
+  </div>
+
+  <!--tela de perfil-->
+  
+  <div class="screen" id="perfilScreen">
+    
+    <h2>Perfil de Saúde<img class="sexo1" src="icons8-pessoa-do-sexo-masculino-50.png" alt="person"></h2>
+    <div class="font-perfil">Nome</div>
+<div class="perfil-saude">Everton Silva</div>
+ <div class="font-perfil">Peso(kg)</div>
+<div class="perfil-saude">83</div>
+ <div class="font-perfil">Data de nascimento</div>
+<div class="perfil-saude">03/05/2002</div>
+ <div class="font-perfil">Sexo</div>
+<div class="perfil-saude">Masculino</div>
+ <div class="font-perfil">Plano de saude</div>
+<div class="perfil-saude">Possui</div>
+  <div class="font-saida-conta"><img src="icons8-sair-16.png" alt="sair" class="sair"> Sair desta conta</div>
+  </div>
+  
+
+<!--TELA DO HISTORICO-->
+
+  <div class="screen" id="historicscreen">
+    <h2>Historico medico<img src="icons8-histórico-de-atividades-48.png" alt="" class="sexo2"></h2>
+    <div><button class="histscreen">Consultas e atendimentos realizados</button></div>
+    <div><button class="histscreen">Historico de prescricoes/medicamentos</button></div>
+    <div><button class="histscreen">Vacinas</button></div>
+    <div><button class="histscreen">Agendamentos</button></div>
+    <div><button class="histscreen">Documentos e arquivos</button></div>
+  </div>
+
+<div class="screen" id="chat">
+    <h2>Chat com Profissional <img src="icons8-bate-papo-64.png" alt="sexo3" class="sexo4"></h2>
+    <div class="chat-box" id="chatBox">
+      <p class="chat-message bot"><strong>Profissional:</strong> Olá! Como posso ajudar?</p>
+    </div>
+    <textarea id="chatInput" placeholder="Pergunte alguma coisa..." class="textarea"></textarea>
+  </div>
+
+
+<!--teste de pop.up-->
+<div class="popup" id="myPopup">
+  <p>Sucesso!</p>
+  <button class="button3" id="closePopup">Fechar</button>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+
+
+  <script>
+    function navigateTo(screenId) {
+      document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('active');
+      });
+      document.getElementById(screenId).classList.add('active');
+    }
+    
+    //teste de pop up
+
+    const openPopupButton = document.getElementById("openPopup");
+  const closePopupButton = document.getElementById("closePopup");
+  const popup = document.getElementById("myPopup");
+  const overlay = document.getElementById("overlay");
+
+  openPopupButton.addEventListener("click", function() {
+    popup.classList.add("show");
+    overlay.classList.add("show");
+  });
+
+  closePopupButton.addEventListener("click", function() {
+    popup.classList.remove("show");
+    overlay.classList.remove("show");
+  });
+
+  // Fechar o pop-up ao clicar fora dele (overlay)
+  overlay.addEventListener("click", function() {
+    popup.classList.remove("show");
+    overlay.classList.remove("show");
+  });
+  
+
+  //rsrs bagulho de chat
+  function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const chatBox = document.getElementById('chatBox');
+      const message = input.value.trim();
+      if (message !== '') {
+        const msgElement = document.createElement('p');
+        msgElement.className = 'chat-message user';
+        msgElement.innerHTML = `<strong>Você:</strong> ${message}`;
+        chatBox.appendChild(msgElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        input.value = '';
+      }
+    }
+
+    document.getElementById('chatInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+  </script>
+
+</body>
+</html>
