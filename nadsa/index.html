@@ -6,23 +6,22 @@
 
 <style>
 body {
-  background:#0f172a;
-  color:white;
-  font-family:Arial;
-  padding:30px;
-}
-
-.card {
-  background:#1e293b;
-  padding:20px;
-  border-radius:10px;
-  margin-bottom:15px;
-  width:250px;
+ background:#0f172a;
+ color:white;
+ font-family:Arial;
+ padding:30px;
 }
 
 .container {
-  display:flex;
-  gap:20px;
+ display:flex;
+ gap:20px;
+}
+
+.card {
+ background:#1e293b;
+ padding:20px;
+ border-radius:10px;
+ width:250px;
 }
 </style>
 </head>
@@ -32,51 +31,13 @@ body {
 <h1>📊 Meu Crypto Lab</h1>
 
 <div class="container">
-  <div class="card" id="btc"></div>
-  <div class="card" id="eth"></div>
-  <div class="card" id="sol"></div>
+ <div class="card" id="btc"></div>
+ <div class="card" id="eth"></div>
+ <div class="card" id="sol"></div>
 </div>
 
-  <script>
-
-const watchlist = [
- "arbitrum",
- "chainlink",
- "optimism",
- "avalanche"
-];
-    
-<script>
-async function loadPrices() {
-  const url =
-  "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true";
-
-  const res = await fetch(url);
-  const data = await res.json();
-
-  document.getElementById("btc").innerHTML =
-    `<h3>Bitcoin</h3>
-     $${data.bitcoin.usd}<br>
-     24h: ${data.bitcoin.usd_24h_change.toFixed(2)}%`;
-
-  document.getElementById("eth").innerHTML =
-    `<h3>Ethereum</h3>
-     $${data.ethereum.usd}<br>
-     24h: ${data.ethereum.usd_24h_change.toFixed(2)}%`;
-
-  document.getElementById("sol").innerHTML =
-    `<h3>Solana</h3>
-     $${data.solana.usd}<br>
-     24h: ${data.solana.usd_24h_change.toFixed(2)}%`;
-}
-
-// primeira carga
-loadPrices();
-
-// atualiza a cada 30 segundos
-setInterval(loadPrices, 30000);
-</script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
+
