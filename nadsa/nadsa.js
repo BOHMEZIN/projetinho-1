@@ -6,14 +6,39 @@ const btc = document.getElementById("btc");
 const eth = document.getElementById("eth");
 const sol = document.getElementById("sol");
 const alerts = document.getElementById("alerts");
+const historyBox = document.getElementById("history");
+
+function getTime(){
+ const d = new Date();
+ return d.toLocaleString();
+}
+
+function loadHistory(){
+ const h = JSON.parse(localStorage.getItem("cryptoHistory")) || [];
+ historyBox.innerHTML = "";
+ h.forEach(i=>{
+  historyBox.innerHTML += `<div class="history-item">${i}</div>`;
+ });
+}
 
 function addAlert(msg){
- alerts.innerHTML += `<div class="alert">${msg}</div>`;
+
+alerts.innerHTML += `<div class="alert">${msg}</div>`;
+
+let history = JSON.parse(localStorage.getItem("cryptoHistory")) || [];
+
+history.unshift(`🕒 ${getTime()} — ${msg}`);
+
+history = history.slice(0,10);
+
+localStorage.setItem("cryptoHistory",JSON.stringify(history));
+
+loadHistory();
 }
 
 async function loadPrices(){
 
-alerts.innerHTML = "";
+alerts.innerHTML="";
 
 const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true");
 const data = await res.json();
@@ -40,6 +65,7 @@ for(let c in coins){
 }
 }
 
+loadHistory();
 loadPrices();
 scanOpportunities();
 
