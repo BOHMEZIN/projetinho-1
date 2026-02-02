@@ -5,6 +5,10 @@ const watchlist = [
  "avalanche"
 ];
 
+const btc = document.getElementById("btc");
+const eth = document.getElementById("eth");
+const sol = document.getElementById("sol");
+
 async function loadPrices() {
 
 const url =
@@ -12,8 +16,6 @@ const url =
 
 const res = await fetch(url);
 const data = await res.json();
-
-// mostrar preços
 
 btc.innerHTML = `
 <h3>Bitcoin</h3>
@@ -43,10 +45,7 @@ if (data.ethereum.usd_24h_change < -6)
 
 if (data.bitcoin.usd_24h_change < -5)
  alert("⚠️ BTC fraco");
-
 }
-
-// oportunidades
 
 async function scanOpportunities() {
 
@@ -61,13 +60,10 @@ for (let coin in coins) {
   alert(`🚀 ${coin.toUpperCase()} oportunidade`);
  }
 }
-
 }
 
 loadPrices();
 scanOpportunities();
-
-// atualiza a cada 30 segundos
 
 setInterval(() => {
  loadPrices();
