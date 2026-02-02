@@ -5,7 +5,6 @@ const watchlist = [
  "avalanche"
 ];
 
-// sua carteira (valores em dólares)
 const wallet = {
  bitcoin: 29,
  ethereum: 13,
@@ -15,14 +14,15 @@ const wallet = {
 const btc = document.getElementById("btc");
 const eth = document.getElementById("eth");
 const sol = document.getElementById("sol");
+const alerts = document.getElementById("alerts");
 
 function addAlert(msg) {
  alerts.innerHTML += `<div class="alert">${msg}</div>`;
 }
 
 async function loadPrices() {
- 
- alerts.innerHTML = ""; // limpa alerts antigos
+
+alerts.innerHTML = "";
 
 const url =
 "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true";
@@ -30,8 +30,8 @@ const url =
 const res = await fetch(url);
 const data = await res.json();
 
- //cards
- 
+// cards
+
 btc.innerHTML = `
 <h3>Bitcoin</h3>
 $${data.bitcoin.usd}
@@ -50,19 +50,18 @@ $${data.solana.usd}
 <br>24h: ${data.solana.usd_24h_change.toFixed(2)}%
 `;
 
-// ALERTAS DE RISCO
+// riscos
 
 if (data.solana.usd_24h_change < -8)
  addAlert("⚠️ SOL caiu forte");
 
 if (data.ethereum.usd_24h_change < -6)
- addalert("⚠️ ETH queda relevante");
+ addAlert("⚠️ ETH queda relevante");
 
 if (data.bitcoin.usd_24h_change < -5)
- addalert("⚠️ BTC fraco");
-}
+ addAlert("⚠️ BTC fraco");
 
-// carteira total
+// carteira
 
 let total =
  wallet.bitcoin +
@@ -72,7 +71,7 @@ let total =
 addAlert(`💰 Carteira: $${total.toFixed(2)}`);
 }
 
-////oportunidades
+// oportunidades
 
 async function scanOpportunities() {
 
