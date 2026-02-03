@@ -51,8 +51,7 @@ if(data.solana.usd_24h_change<-8) addAlert("⚠️ SOL caiu forte");
 if(data.ethereum.usd_24h_change<-6) addAlert("⚠️ ETH queda relevante");
 if(data.bitcoin.usd_24h_change<-5) addAlert("⚠️ BTC fraco");
 
-addAlert(`💰 Carteira: $${(wallet.bitcoin+wallet.ethereum+wallet.solana).toFixed(2)}`);
-}
+alerts.innerHTML += `<div class="alert">💰 Carteira: $${(wallet.bitcoin+wallet.ethereum+wallet.solana).toFixed(2)}</div>`;
 
 async function scanOpportunities(){
 
